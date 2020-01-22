@@ -8005,7 +8005,7 @@ bpf_program__get_prog_info_linear(int fd, __u64 arrays)
 	if (!info_linear)
 		return ERR_PTR(-ENOMEM);
 
-    info_linear->data = info_linear + 1;
+    info_linear->data = (__u8*)(info_linear + 1);
 
 	/* step 4: fill data to info_linear->info */
 	info_linear->arrays = arrays;
