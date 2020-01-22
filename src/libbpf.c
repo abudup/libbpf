@@ -8001,8 +8001,11 @@ bpf_program__get_prog_info_linear(int fd, __u64 arrays)
 	/* step 3: allocate continuous memory */
 	data_len = roundup(data_len, sizeof(__u64));
 	info_linear = malloc(sizeof(struct bpf_prog_info_linear) + data_len);
+
 	if (!info_linear)
 		return ERR_PTR(-ENOMEM);
+
+    info_linear->data = info_linear + 1;
 
 	/* step 4: fill data to info_linear->info */
 	info_linear->arrays = arrays;

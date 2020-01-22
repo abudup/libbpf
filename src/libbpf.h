@@ -577,7 +577,7 @@ struct bpf_prog_info_linear {
 	/* which arrays are included in data */
 	__u64			arrays;
 	struct bpf_prog_info	info;
-	__u8			data[];
+	__u8*			data;
 };
 
 LIBBPF_API struct bpf_prog_info_linear *
